@@ -190,6 +190,22 @@
 
 
 #pragma mark - UITableViewDelegate
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    NSLog(@"点击了第%zd行",indexPath.row);
+    
+    if (!tableView.editing) {//增加点击事件处理
+        UIViewController *viewController = [[UIViewController alloc] init];
+        viewController.view.backgroundColor = [UIColor whiteColor];
+        viewController.title = cell.textLabel.text;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
